@@ -404,7 +404,7 @@ p {
 #fh5co-about .fh5co-text {
   padding: 2em 6em;
   text-align: left;
-  background: #130d08 url(../images/wood_1.png) repeat;
+  background: wheat;
 }
 @media screen and (max-width: 1200px) {
   #fh5co-about .fh5co-text {
@@ -412,11 +412,11 @@ p {
   }
 }
 #fh5co-about .fh5co-text .btn {
-  color: #fff;
+  color: black;
 }
 #fh5co-about .fh5co-text .heading {
   margin-bottom: 30px;
-  color: #fff;
+  color: black;
   font-style: italic;
   font-weight: 300;
   position: relative;
@@ -435,20 +435,21 @@ p {
 }
 #fh5co-about .fh5co-text p {
   line-height: 2;
-  color: #a99c92;
+  color: #0d0702;
 }
 #fh5co-about .fh5co-text p span.firstcharacter {
   float: left;
-  color: #903;
+  color: rgb(14, 8, 10);
   font-size: 75px;
-  line-height: 60px;
+  text-align: justify;
+  line-height: 65px;
   padding-top: 4px;
   padding-right: 10px;
   padding-left: 3px;
   font-style: italic;
   top: -20px;
   position: relative;
-  color: #fff;
+  color:black;
   font-family: "Playfair Display", serif;
 }
 #fh5co-about .fh5co-bg {
@@ -551,8 +552,8 @@ p {
   color: #fff;
 }
 #fh5co-featured .fh5co-heading .heading:before, #fh5co-featured .fh5co-heading .heading::before {
-  height: 64px;
-  width: 64px;
+  height: 60px;
+  width: 80px;
   position: absolute;
   content: "";
   background: url(../images/0103-served-plate_64.png) no-repeat;
@@ -560,6 +561,8 @@ p {
   left: 50%;
   margin-top: -50px;
   margin-left: -32px;
+  mix-blend-mode: multiply;
+  overflow: hidden;
 }
 #fh5co-featured .fh5co-heading .sub-heading {
   color: #a99c92;
@@ -1319,18 +1322,13 @@ p {
   content: "";
   position: absolute;
   left: 50%;
-  margin-left: -54px;
+  margin-left: -78px;
   margin-top: -125px;
-  width: 104px;
-  height: 104px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
+
+
 }
 #fh5co-type h3.with-icon.icon-1:before, #fh5co-type h3.with-icon.icon-1::before {
-  background: url(../images/type-1.png) no-repeat center center;
+  background: url(../images/fruits.webp) no-repeat center center;
 }
 #fh5co-type h3.with-icon.icon-2:before, #fh5co-type h3.with-icon.icon-2::before {
   background: url(../images/type-2.png) no-repeat center center;
