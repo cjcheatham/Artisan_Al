@@ -16,17 +16,23 @@ function calculateIfTriggered() {
 function calculate() {
     // Get the selected value from the dropdown
     const HealthKeyword = document.getElementById('diet').value;
-    calculateData(HealthKeyword);
-    console.log(HealthKeyword)
+    const CookTimeKeyword = document.getElementById('prep_time').value;
+    const RegionKeyword = document.getElementById('region').value;
+
+    // Call calculateData with all three variables
+    calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword);
+    console.log(HealthKeyword, CookTimeKeyword, RegionKeyword)
 }
 
-function calculateData(HealthKeyword) {
+function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
     // Find records matching the selected health keyword
     const matchingRecords = zipData.filter(entry => {
         // Use regular expression to match keywords within double quotes
         const keywordsArray = entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, ''));
         // Check if the selected HealthKeyword exists in the keywordsArray
-        return keywordsArray.includes(HealthKeyword);
+        return keywordsArray.includes(HealthKeyword) &&
+            keywordsArray.includes(CookTimeKeyword) &&
+            keywordsArray.includes(RegionKeyword);
     });
     console.log(matchingRecords);
     // Sort matching records based on AggregatedRating (descending order)
@@ -106,7 +112,7 @@ function displayTop5Records(top5Records, HealthKeyword) {
         resultElement.append(div);
 
         // Initialize FlexSlider
-        $('.flexslider').flexslider({
+        div.flexslider({
             animation: 'slide',
             controlNav: false
         });

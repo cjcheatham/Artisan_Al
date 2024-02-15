@@ -257,7 +257,7 @@ p {
 }
 #fh5co-home .flexslider .flex-control-nav,
 #fh5co-home .flexslider .flex-direction-nav {
-  display: none;
+  display: block;
 }
 
 .fh5co-main-nav {

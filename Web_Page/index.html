@@ -154,68 +154,89 @@
           <div class="dropdown">
             <!-- Background Image Area -->
             <div class="background-image">
-              <!-- Diet option Dropdown Selector -->
-              <label for="diet">Select type of recipe:</label>
-              <select id="diet">
-                <option value="High Protein">High Protein</option>
-                <option value="Low Protein">Low Protein</option>
-                <option value="Low Cholesterol">Low Cholesterol</option>
-                <option value="Low Carbs">Low Carbs</option>
-                <option value="Low Sodium">Low Sodium</option>
-                <option value="Vegan">Vegan</option>
-              </select>
               <div>
-              <!-- Button to Trigger Calculation -->
-              <button onclick="triggerCalculateFunction()">Calculate</button>
+                <!-- Diet option Dropdown Selector -->
+                <label for="diet">Select type of recipe:</label>
+                <select id="diet">
+                  <option value="High Protein">High Protein</option>
+                  <option value="Low Protein">Low Protein</option>
+                  <option value="Low Cholesterol">Low Cholesterol</option>
+                  <option value="Low Carbs">Low Carbs</option>
+                  <option value="Low Sodium">Low Sodium</option>
+                  <option value="Vegan">Vegan</option>
+                </select>
               </div>
+              <div>
+                <!-- Cook Time option Dropdown Selector -->
+                <label for="prep_time">Cook Time:</label>
+                <select id="prep_time">
+                  <option value="< 15 Mins">Less then 15 minutes</option>
+                  <option value="< 30 Mins">Less then 30 minutes</option>
+                  <option value="< 60 Mins">Less then 60 minutes</option>
+                  <option value="< 4 Hours">Less then 4 hours</option>
+                </select>
+              </div>
+              <div>
+                <!--Region option Dropdown Selector -->
+                <label for="region">Region:</label>
+                <select id="region">
+                  <option value="Asian">Asian</option>
+                  <option value="Thai">Thai</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Italy">Italy</option>
+                </select>
+              </div>
+              <!-- Button to Trigger Calculation -->
+              <button onclick="triggerCalculateFunction()">Enter</button>
               <!-- Display Result -->
               <!-- <div id="result"></div> -->
             </div>
-          </div>
+          </div>          
         </div>
       </div>
       <style> 
-        .dropdown {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          vertical-align: middle;
-          width: 100%;
-          /* Adjust the height as needed */
-          height: 600px; /* Example height */
-        }
-        
-        .dropdown .background-image {
-          position: relative;
-          background-image: url('images/dropdown_image.jpeg');
-          background-size: cover;
-          background-position: center;
-          width: 100%; /* Ensure the background image spans the entire width */
-          height: 100%; /* Ensure the background image spans the entire height */
-        }
-        
-        .dropdown .background-image > * {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-        .dropdown .background-image label {
-          margin-top: 200px; /* Adjust the margin as needed */
-          font-size: 30px;
-          display: block;
-        }
-        
-        .dropdown .background-image select {
-          margin-top: 280px; /* Adjust the margin as needed */
-          font-size: 30px;
-          display: block;
-        }
+          .dropdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 600px; /* Example height */
+          }
 
-        .dropdown .background-image button {
-          margin-top: 350px; /* Adjust the margin as needed */
-          font-size: 30px;
-          display: block;
-        }
+          .dropdown .background-image {
+            background-image: url('images/dropdown_image.jpeg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .dropdown .background-image > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%; /* Adjust width as needed */
+          }
+
+          .dropdown .background-image label {
+            font-size: 30px;
+            margin-left: auto; /* Adjust margin between label and select */
+          }
+
+          .dropdown .background-image select {
+            font-size: 30px;
+            margin-right: auto;
+          }
+
+          .dropdown .background-image button {
+            font-size: 30px;
+            margin-top: 20px; /* Adjust margin between selector and button */
+            /*padding: 5px 10px; /* Adjust button padding if needed */
+          }
       </style>
 
       <div id="fh5co-menus" data-section="menu">
@@ -229,14 +250,16 @@
               </p>
             </div>
           </div>
-          <!-- <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center to-animate-2"> -->
+          <div class="row to-animate">
+            <div class="flexslider">
+              <ul class="slides">
               <p>
               <!-- Display Result -->
               <div id="result"></div>
               </p>
-            <!-- </div>
-          </div> -->
+            </ul>
+          </div>
+        </div>
         </div>
       </div>      
 
