@@ -120,7 +120,7 @@ function displayTop5Records(top5Records, HealthKeyword) {
 let zipData; // Declare zipData in the outer scope
 
 // Load JSON data
-fetch('../Data/cleanSamplerecipes.json') // Change the file path to the generated JSON file
+fetch('../Data/clean/cleanSamplerecipes.json') // Change the file path to the generated JSON file
     .then(response => response.json())
     .then(jsonData => {
         // Set zipData to the loaded JSON data
