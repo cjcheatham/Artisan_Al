@@ -24,28 +24,126 @@ function calculate() {
     console.log(HealthKeyword, CookTimeKeyword, RegionKeyword)
 }
 
-function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
-    // Find records matching the selected health keyword
-    const matchingRecords = zipData.filter(entry => {
-        // Use regular expression to match keywords within double quotes
-        const keywordsArray = entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, ''));
-        // Check if the selected HealthKeyword exists in the keywordsArray
-        return keywordsArray.includes(HealthKeyword) &&
-            keywordsArray.includes(CookTimeKeyword) &&
-            keywordsArray.includes(RegionKeyword);
-    });
-    console.log(matchingRecords);
-    // Sort matching records based on AggregatedRating (descending order)
-    matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
+// function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
+//     // Find records matching the selected health keyword
+//     const matchingRecords = zipData.filter(entry => {
+//         // Use regular expression to match keywords within double quotes
+//         const keywordsArray = entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, ''));
+//         // Check if the selected HealthKeyword exists in the keywordsArray
+//         return keywordsArray.includes(HealthKeyword) &&
+//             keywordsArray.includes(CookTimeKeyword) &&
+//             keywordsArray.includes(RegionKeyword);
+//     });
+//     console.log(matchingRecords);
+//     // Sort matching records based on AggregatedRating (descending order)
+//     matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
 
-    // Take the top 5 records
-    const top5Records = matchingRecords.slice(0, 5);
+//     // Initialize an array to store selected records
+//     const selectedRecords = [];
     
-    console.log(top5Records);
-    // Display the top 5 records
-    displayTop5Records(top5Records, HealthKeyword);
-}
+//     // Take the top 5 records, avoiding duplicates
+//     for (const record of matchingRecords) {
+//         if (selectedRecords.length >= 5) {
+//             break; // Break loop if 5 records have been selected
+//         }
+//         // Check if the record has already been selected
+//         if (!selectedRecords.some(selectedRecord => selectedRecord.UniqueIdentifier === record.UniqueIdentifier)) {
+//             selectedRecords.push(record); // Add record to selected records
+//         }
+//     }
+    
+//     console.log(selectedRecords);
+//     // Display the selected records
+//     displayTop5Records(selectedRecords, HealthKeyword);
+// }
 
+function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
+    // // Find records matching the selected health keyword
+    // let matchingRecords = zipData;
+    
+    // if (HealthKeyword || CookTimeKeyword || RegionKeyword) {
+    //     matchingRecords = matchingRecords.filter(entry => {
+    //         // Use regular expression to match keywords within double quotes
+    //         const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+    //         // Check if the selected HealthKeyword exists in the keywordsArray
+    //         const healthMatch = !HealthKeyword || keywordsArray.includes(HealthKeyword);
+    //         const cookTimeMatch = !CookTimeKeyword || keywordsArray.includes(CookTimeKeyword);
+    //         const regionMatch = !RegionKeyword || keywordsArray.includes(RegionKeyword);
+    //         return healthMatch && cookTimeMatch && regionMatch;
+    //     });
+    // }
+
+    let matchingRecords;
+    
+    // Check for all possible combinations of missing keywords
+    if (!HealthKeyword && !CookTimeKeyword && !RegionKeyword) {
+        // If all keywords are missing, include all records
+        matchingRecords = zipData;
+    } else if (!HealthKeyword && !CookTimeKeyword) {
+        // If HealthKeyword and CookTimeKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            return keywordsArray.includes(RegionKeyword);
+        });
+    } else if (!HealthKeyword && !RegionKeyword) {
+        // If HealthKeyword and RegionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            return keywordsArray.includes(CookTimeKeyword);
+        });
+    } else if (!CookTimeKeyword && !RegionKeyword) {
+        // If CookTimeKeyword and RegionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            return keywordsArray.includes(HealthKeyword);
+        });
+    } else if (!HealthKeyword) {
+        // If HealthKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            return cookTimeMatch && regionMatch;
+        });
+    } else if (!CookTimeKeyword) {
+        // If CookTimeKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            return healthMatch && regionMatch;
+        });
+    } else if (!RegionKeyword) {
+        // If RegionKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            return healthMatch && cookTimeMatch;
+        });
+    } else {
+        // If all keywords are provided, filter based on all three keywords
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            return healthMatch && cookTimeMatch && regionMatch;
+        });
+    }
+
+    console.log(matchingRecords);
+     // Sort matching records based on AggregatedRating (descending order)
+     matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
+
+     // Take the top 5 records
+     const top5Records = matchingRecords.slice(0, 5);
+     
+     console.log(top5Records);
+     // Display the top 5 records
+     displayTop5Records(top5Records, HealthKeyword);
+ }
+ 
 function displayTop5Records(top5Records, HealthKeyword) {
     const resultElement = $('#result'); // Use jQuery to select the result element
 
@@ -82,7 +180,7 @@ function displayTop5Records(top5Records, HealthKeyword) {
                 // Create an img element for the first image URL and append it to the list item
                 const img = $('<img>').attr({
                     src: firstImageUrl,
-                    alt: 'Recipe Image'
+                    alt: 'Recipe Image Unavailable'
                 }).css({
                     display: 'block',
                     maxWidth: '40%'
@@ -97,9 +195,11 @@ function displayTop5Records(top5Records, HealthKeyword) {
             // Create spans for other record details
             const ratingSpan = $('<span>').text(`Rating: ${record.AggregatedRating}`);
             const descriptionSpan = $('<span>').text(`Description: ${record.Description}`);
+            const instructionSpan = $('<span>').text(`Instructions: ${record.RecipeInstructions}`);
+            const urlSpan = $('<span>').html(`Food.com URL: <a href="${record.URL}" target="_blank">${record.URL}</a>`);
 
             // Append ratingSpan and descriptionSpan to the li
-            li.append(ratingSpan, $('<br>'), descriptionSpan, $('<br>'));
+            li.append(ratingSpan, $('<br>'), $('<br>'),descriptionSpan, $('<br>'), $('<br>'),instructionSpan, $('<br>'), $('<br>'),urlSpan, $('<br>'));
 
             // Append the li to the ul
             ul.append(li);
