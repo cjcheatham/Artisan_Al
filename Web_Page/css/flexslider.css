@@ -132,7 +132,7 @@ html[xmlns] .flexslider .slides {
 }
 .flex-direction-nav a:before {
   font-family: "flexslider-icon";
-  font-size: 16px;
+  font-size: 30px;
   display: inline-block;
   content: '<<';
   color: rgba(0, 0, 0, 0.8);
@@ -140,7 +140,6 @@ html[xmlns] .flexslider .slides {
 }
 .flex-direction-nav a.flex-next:before {
   content: '>>';
-  font-size: 16px;
 }
 .flex-direction-nav .flex-prev {
   left: -50px;

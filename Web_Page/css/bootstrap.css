@@ -1939,6 +1939,7 @@ pre code {
 .container:before, .container:after {
   content: " ";
   display: table;
+  margin-top: -20px;
 }
 .container:after {
   clear: both;
@@ -7320,4 +7321,4 @@ button.close {
   }
 }
 
-/* # sourceMappingURL=bootstrap.css.map */
+/*# sourceMappingURL=bootstrap.css.map */

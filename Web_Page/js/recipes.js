@@ -17,61 +17,14 @@ function calculate() {
     // Get the selected value from the dropdown
     const HealthKeyword = document.getElementById('diet').value;
     const CookTimeKeyword = document.getElementById('prep_time').value;
-    const RegionKeyword = document.getElementById('region').value;
+    const RegionKeyword = document.getElementById('cuisine').value;
 
     // Call calculateData with all three variables
     calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword);
     console.log(HealthKeyword, CookTimeKeyword, RegionKeyword)
 }
 
-// function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
-//     // Find records matching the selected health keyword
-//     const matchingRecords = zipData.filter(entry => {
-//         // Use regular expression to match keywords within double quotes
-//         const keywordsArray = entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, ''));
-//         // Check if the selected HealthKeyword exists in the keywordsArray
-//         return keywordsArray.includes(HealthKeyword) &&
-//             keywordsArray.includes(CookTimeKeyword) &&
-//             keywordsArray.includes(RegionKeyword);
-//     });
-//     console.log(matchingRecords);
-//     // Sort matching records based on AggregatedRating (descending order)
-//     matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
-
-//     // Initialize an array to store selected records
-//     const selectedRecords = [];
-    
-//     // Take the top 5 records, avoiding duplicates
-//     for (const record of matchingRecords) {
-//         if (selectedRecords.length >= 5) {
-//             break; // Break loop if 5 records have been selected
-//         }
-//         // Check if the record has already been selected
-//         if (!selectedRecords.some(selectedRecord => selectedRecord.UniqueIdentifier === record.UniqueIdentifier)) {
-//             selectedRecords.push(record); // Add record to selected records
-//         }
-//     }
-    
-//     console.log(selectedRecords);
-//     // Display the selected records
-//     displayTop5Records(selectedRecords, HealthKeyword);
-// }
-
 function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
-    // // Find records matching the selected health keyword
-    // let matchingRecords = zipData;
-    
-    // if (HealthKeyword || CookTimeKeyword || RegionKeyword) {
-    //     matchingRecords = matchingRecords.filter(entry => {
-    //         // Use regular expression to match keywords within double quotes
-    //         const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
-    //         // Check if the selected HealthKeyword exists in the keywordsArray
-    //         const healthMatch = !HealthKeyword || keywordsArray.includes(HealthKeyword);
-    //         const cookTimeMatch = !CookTimeKeyword || keywordsArray.includes(CookTimeKeyword);
-    //         const regionMatch = !RegionKeyword || keywordsArray.includes(RegionKeyword);
-    //         return healthMatch && cookTimeMatch && regionMatch;
-    //     });
-    // }
 
     let matchingRecords;
     
@@ -133,15 +86,31 @@ function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
     }
 
     console.log(matchingRecords);
-     // Sort matching records based on AggregatedRating (descending order)
-     matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
+    // Sort matching records based on AggregatedRating (descending order)
+    matchingRecords.sort((a, b) => b.AggregatedRating - a.AggregatedRating);
 
-     // Take the top 5 records
-     const top5Records = matchingRecords.slice(0, 5);
-     
-     console.log(top5Records);
-     // Display the top 5 records
-     displayTop5Records(top5Records, HealthKeyword);
+    // Initialize an empty array to store the top records
+    const topRecords = [];
+
+    // Iterate over matchingRecords to select top 5 records
+    for (const record of matchingRecords) {
+        // Check if the topRecords array already contains a record with the same Name or RecipeId
+        const isDuplicate = topRecords.some(topRecord => topRecord.Name === record.Name || topRecord.RecipeId === record.RecipeId);
+        
+        // If not a duplicate, add the record to topRecords
+        if (!isDuplicate) {
+            topRecords.push(record);
+        }
+        
+        // Break out of the loop if we have already found 5 unique top records
+        if (topRecords.length === 5) {
+            break;
+        }
+    }
+
+    // Display the top records
+    console.log(topRecords);
+    displayTop5Records(topRecords, HealthKeyword);
  }
  
 function displayTop5Records(top5Records, HealthKeyword) {
@@ -195,7 +164,7 @@ function displayTop5Records(top5Records, HealthKeyword) {
             // Create spans for other record details
             const ratingSpan = $('<span>').text(`Rating: ${record.AggregatedRating}`);
             const descriptionSpan = $('<span>').text(`Description: ${record.Description}`);
-            const instructionSpan = $('<span>').text(`Instructions: ${record.RecipeInstructions}`);
+            const instructionSpan = $('<span>').html(`Instructions: ${record.RecipeInstructions.replace(/(?:,)/g,'<br>')}`);
             const urlSpan = $('<span>').html(`Food.com URL: <a href="${record.URL}" target="_blank">${record.URL}</a>`);
 
             // Append ratingSpan and descriptionSpan to the li
@@ -226,7 +195,7 @@ function displayTop5Records(top5Records, HealthKeyword) {
 let zipData; // Declare zipData in the outer scope
 
 // Load JSON data
-fetch('../Data/clean/cleanSamplerecipes.json') // Change the file path to the generated JSON file
+fetch('../Data/clean/cleanMLrecipes.json') // Change the file path to the generated JSON file
     .then(response => response.json())
     .then(jsonData => {
         // Set zipData to the loaded JSON data
