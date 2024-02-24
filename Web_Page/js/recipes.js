@@ -164,11 +164,26 @@ function displayTop5Records(top5Records, HealthKeyword) {
             // Create spans for other record details
             const ratingSpan = $('<span>').text(`Rating: ${record.AggregatedRating}`);
             const descriptionSpan = $('<span>').text(`Description: ${record.Description}`);
-            const instructionSpan = $('<span>').html(`Instructions: ${record.RecipeInstructions.replace(/(?:,)/g,'<br>')}`);
+            // const instructionSpan = $('<span>').html(`Instructions: ${record.RecipeInstructions.replace(/(?:,)/g)}`);
             const urlSpan = $('<span>').html(`Food.com URL: <a href="${record.URL}" target="_blank">${record.URL}</a>`);
+            const topIngredient = $('<span>').text(`Individuals may desire to match or complement the dish with the following options: ${record.TopIngredient}`);
+            const suggestionSpan = $('<span>').text(`(Recommend adjusting ingredients based on personal taste preferences)`);
+            // Enclosed within double quotes and separated by commas
+            const instructionsList = record.RecipeInstructions.split('", "');
+
+            // Convert the list of instructions into an HTML string with line breaks
+            const formattedInstructions = instructionsList.map(instruction => {
+                // Remove leading and trailing double quotes
+                const cleanedInstruction = instruction.replace(/^"|"$/g, '').trim();
+                return `${cleanedInstruction}<br>`;
+            }).join('');
+
+            // Create a span element with the formatted instructions
+            const instructionSpan = $('<span>').html(`Instructions: ${formattedInstructions}`);
+
 
             // Append ratingSpan and descriptionSpan to the li
-            li.append(ratingSpan, $('<br>'), $('<br>'),descriptionSpan, $('<br>'), $('<br>'),instructionSpan, $('<br>'), $('<br>'),urlSpan, $('<br>'));
+            li.append(ratingSpan, $('<br>'), $('<br>'),descriptionSpan, $('<br>'), $('<br>'),instructionSpan, $('<br>'), $('<br>'),urlSpan, $('<br>'),$('<br>'),$('<br>'),topIngredient, $('<br>'),suggestionSpan, $('<br>'));
 
             // Append the li to the ul
             ul.append(li);
