@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Ignore recipes_cleaned.csv in data/clean directory
+data/clean/recipes_cleaned.csv
+
 # C extensions
 *.so
 
