@@ -195,6 +195,9 @@
                   <div class="form-group">
                     <label for="cuisine" style="margin-left: 65%;">Cuisine:</label>
                   </div>
+                  <div class="form-group">
+                    <label for="occasion" style="margin-left: 65%;">Occasion:</label>
+                  </div>
                 </div>
                 
                 <!-- Right Column for Dropdowns -->
@@ -228,23 +231,65 @@
                     </select>
                   </div>
                   
-                  <!-- Cuisine option Dropdown Selector -->
                   <div class="form-group">
                     <select id="cuisine" class="form-control" style="margin-left: 20%">
-                      <option value="">Everything</option>
-                      <option value="Asian">Asian</option>
-                      <option value="Chinese">Chinese</option>
-                      <option value="European">European</option>
-                      <option value="Filipino">Filipino</option>
-                      <option value="Indian">Indian</option>
-                      <option value="Japanese">Japanese</option>
-                      <option value="Korean">Korean</option>
-                      <option value="Mexican">Mexican</option>
-                      <option value="Spanish">Spanish</option>
-                      <option value="Thai">Thai</option>
-                      <option value="Vietnamese">Vietnamese</option>
+                        <!-- Default "Everything" option -->
+                        <option value="">Everything</option>
                     </select>
                   </div>
+            
+                  <script>
+                      // JavaScript function to generate HTML dropdown list options
+                      function generateDropdownOptions(options) {
+                          var dropdownOptions = '';
+                          options.forEach(function(option) {
+                              dropdownOptions += '<option value="' + option + '">' + option + '</option>';
+                          });
+                          return dropdownOptions;
+                      }
+              
+                      // List of cuisine options
+                      var country_region_keywords = ['Asian', 'Australian', 'Austrian', 'Belgian', 'Brazilian', 'Cajun', 'Cambodian', 'Canadian', 'Cantonese',
+                          'Caribbean', 'Chilean', 'Chinese', 'Colombian', 'Costa Rican', 'Creole', 'Cuban', 'Czech', 'Danish', 'Dutch',
+                          'Ecuadorean', 'Egyptian', 'Ethiopian', 'European', 'Filipino', 'Finnish', 'Georgian', 'German', 'Greek',
+                          'Guatemalan', 'Hawaiian', 'Honduran', 'Hunan', 'Hungarian', 'Icelandic', 'Indian', 'Indonesian', 'Iraqi',
+                          'Japanese', 'Korean', 'Lebanese', 'Malaysian', 'Mexican', 'Mongolian', 'Moroccan', 'Native American', 'Nepalese',
+                          'New Zealand', 'Nigerian', 'Norwegian', 'Pakistani', 'Palestinian', 'Pennsylvania Dutch', 'Peruvian', 'Polish',
+                          'Polynesian', 'Portuguese', 'Puerto Rican', 'Russian', 'Scandinavian', 'Scottish', 'Somalian', 'South African',
+                          'South American', 'Southwest Asia (middle East)', 'Southwestern U.S.', 'Spanish', 'Sudanese', 'Swedish', 'Swiss',
+                          'Szechuan', 'Tex Mex', 'Thai', 'Turkish', 'Venezuelan', 'Vietnamese', 'Welsh'];
+              
+                      // Call the function to generate options and append them to the dropdown
+                      document.getElementById('cuisine').innerHTML += generateDropdownOptions(country_region_keywords);
+                  </script>
+
+                  <div class="form-group">
+                    <select id="occasion" class="form-control" style="margin-left: 20%">
+                        <!-- Default "Everything" option -->
+                        <option value="">Everything</option>
+                    </select>
+                  </div>
+
+                  <script>
+                      // JavaScript function to generate HTML dropdown list options
+                      function generateDropdownOptions(options) {
+                          var dropdownOptions = '';
+                          options.forEach(function(option) {
+                              dropdownOptions += '<option value="' + option + '">' + option + '</option>';
+                          });
+                          return dropdownOptions;
+                      }
+
+                      // List of cuisine options
+                      var occasion_keywords = ['Birthday', 'Breakfast', 'Ramadan', 'Brunch', 'Camping', 
+                      'Chinese New Year', 'Christmas', 'For Large Groups', 'Halloween', 'Hanukkah', 
+                      'Household Cleaner', 'Labor Day', 'Memorial Day', 'Reynolds Wrap Contest', 'Spring', 
+                      "St. Patrick's Day", 'Summer', 'Thanksgiving', 'Weeknight', 'For Large Groups Holiday/Event', 
+                      'Halloween Cocktail', 'Served Hot New Years'];
+
+                      // Call the function to generate options and append them to the dropdown
+                      document.getElementById('occasion').innerHTML += generateDropdownOptions(occasion_keywords);
+                  </script>                             
                 </div>
               </div>
             </div>
