@@ -237,8 +237,6 @@ function displayTop5Records(top5Records, HealthKeyword) {
             const ratingSpan = $('<span>').text(`Rating: ${record.AggregatedRating}`);
             const descriptionSpan = $('<span>').html(`<strong>Description:</strong> ${record.Description}`);
             const urlSpan = $('<span>').html(`Food.com URL: <a href="${record.URL}" target="_blank">${record.URL}</a>`);
-            const topIngredient = $('<span>').html(`Individuals may desire to match or complement the dish with the following options:<br>${record.TopIngredient.split(',').map(ingredient => `- ${ingredient.trim()}`).join('<br>')}`);
-            const suggestionSpan = $('<span>').text(`(Recommend adjusting ingredients based on personal taste preferences)`);
             // Enclosed within double quotes and separated by commas
             const instructionsList = record.RecipeInstructions.split('", "');
 
