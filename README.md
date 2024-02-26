@@ -17,22 +17,22 @@ To get started with our ArtisanAl Recipe Generator, simply
 
 ## Meet the Team
 
-### [Yee Wai Huang]
+### Yee Wai Huang
 - **Role:** [Web Developer/Designer]
 - **Contribution:** 
 
-### [Sophia]
+### Sophia
 - **Role:** [Web Developer/Designer]
 - **Contribution:**
 
-### [Athansiaos Chryssis]
+### Athansiaos Chryssis
 - **Role:** [ML Engineer]
 - **Contribution:** 
 
-### [Cody Cheatham]
+### Cody Cheatham
 - **Role:** [Database Architect]
 - **Contribution:** 
 
-### [Jovane Cano]
+### Jovane Cano
 - **Role:** [Python Developer]
 - **Contribution:** 
