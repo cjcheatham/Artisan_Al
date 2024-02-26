@@ -1,0 +1,96 @@
+-- Drop the table if it exists
+DROP TABLE IF EXISTS country_keywords;
+
+-- Create the country_keywords table
+CREATE TABLE country_keywords AS
+SELECT 
+    RecipeId,
+    Name,
+    COALESCE(
+        CASE
+            WHEN LOWER(Keywords) LIKE '%african%' THEN 'African'
+            WHEN LOWER(Keywords) LIKE '%asian%' THEN 'Asian'
+            WHEN LOWER(Keywords) LIKE '%australian%' THEN 'Australian'
+            WHEN LOWER(Keywords) LIKE '%austrian%' THEN 'Austrian'
+            WHEN LOWER(Keywords) LIKE '%belgian%' THEN 'Belgian'
+            WHEN LOWER(Keywords) LIKE '%brazilian%' THEN 'Brazilian'
+            WHEN LOWER(Keywords) LIKE '%cajun%' THEN 'Cajun'
+            WHEN LOWER(Keywords) LIKE '%cambodian%' THEN 'Cambodian'
+            WHEN LOWER(Keywords) LIKE '%canadian%' THEN 'Canadian'
+            WHEN LOWER(Keywords) LIKE '%cantonese%' THEN 'Cantonese'
+            WHEN LOWER(Keywords) LIKE '%caribbean%' THEN 'Caribbean'
+            WHEN LOWER(Keywords) LIKE '%chilean%' THEN 'Chilean'
+            WHEN LOWER(Keywords) LIKE '%chinese%' THEN 'Chinese'
+            WHEN LOWER(Keywords) LIKE '%colombian%' THEN 'Colombian'
+            WHEN LOWER(Keywords) LIKE '%costa rican%' THEN 'Costa Rican'
+            WHEN LOWER(Keywords) LIKE '%creole%' THEN 'Creole'
+            WHEN LOWER(Keywords) LIKE '%cuban%' THEN 'Cuban'
+            WHEN LOWER(Keywords) LIKE '%czech%' THEN 'Czech'
+            WHEN LOWER(Keywords) LIKE '%danish%' THEN 'Danish'
+            WHEN LOWER(Keywords) LIKE '%dutch%' THEN 'Dutch'
+            WHEN LOWER(Keywords) LIKE '%ecuadorean%' THEN 'Ecuadorean'
+            WHEN LOWER(Keywords) LIKE '%egyptian%' THEN 'Egyptian'
+            WHEN LOWER(Keywords) LIKE '%ethiopian%' THEN 'Ethiopian'
+            WHEN LOWER(Keywords) LIKE '%european%' THEN 'European'
+            WHEN LOWER(Keywords) LIKE '%filipino%' THEN 'Filipino'
+            WHEN LOWER(Keywords) LIKE '%finnish%' THEN 'Finnish'
+            WHEN LOWER(Keywords) LIKE '%georgian%' THEN 'Georgian'
+            WHEN LOWER(Keywords) LIKE '%german%' THEN 'German'
+            WHEN LOWER(Keywords) LIKE '%greek%' THEN 'Greek'
+            WHEN LOWER(Keywords) LIKE '%guatemalan%' THEN 'Guatemalan'
+            WHEN LOWER(Keywords) LIKE '%hawaiian%' THEN 'Hawaiian'
+            WHEN LOWER(Keywords) LIKE '%honduran%' THEN 'Honduran'
+            WHEN LOWER(Keywords) LIKE '%hunan%' THEN 'Hunan'
+            WHEN LOWER(Keywords) LIKE '%hungarian%' THEN 'Hungarian'
+            WHEN LOWER(Keywords) LIKE '%icelandic%' THEN 'Icelandic'
+            WHEN LOWER(Keywords) LIKE '%indian%' THEN 'Indian'
+            WHEN LOWER(Keywords) LIKE '%indonesian%' THEN 'Indonesian'
+            WHEN LOWER(Keywords) LIKE '%iraqi%' THEN 'Iraqi'
+            WHEN LOWER(Keywords) LIKE '%japanese%' THEN 'Japanese'
+            WHEN LOWER(Keywords) LIKE '%korean%' THEN 'Korean'
+            WHEN LOWER(Keywords) LIKE '%lebanese%' THEN 'Lebanese'
+            WHEN LOWER(Keywords) LIKE '%malaysian%' THEN 'Malaysian'
+            WHEN LOWER(Keywords) LIKE '%mexican%' THEN 'Mexican'
+            WHEN LOWER(Keywords) LIKE '%mongolian%' THEN 'Mongolian'
+            WHEN LOWER(Keywords) LIKE '%moroccan%' THEN 'Moroccan'
+            WHEN LOWER(Keywords) LIKE '%native american%' THEN 'Native American'
+            WHEN LOWER(Keywords) LIKE '%nepalese%' THEN 'Nepalese'
+            WHEN LOWER(Keywords) LIKE '%new zealand%' THEN 'New Zealand'
+            WHEN LOWER(Keywords) LIKE '%nigerian%' THEN 'Nigerian'
+            WHEN LOWER(Keywords) LIKE '%norwegian%' THEN 'Norwegian'
+            WHEN LOWER(Keywords) LIKE '%pakistani%' THEN 'Pakistani'
+            WHEN LOWER(Keywords) LIKE '%palestinian%' THEN 'Palestinian'
+            WHEN LOWER(Keywords) LIKE '%pennsylvania dutch%' THEN 'Pennsylvania Dutch'
+            WHEN LOWER(Keywords) LIKE '%peruvian%' THEN 'Peruvian'
+            WHEN LOWER(Keywords) LIKE '%polish%' THEN 'Polish'
+            WHEN LOWER(Keywords) LIKE '%polynesian%' THEN 'Polynesian'
+            WHEN LOWER(Keywords) LIKE '%portuguese%' THEN 'Portuguese'
+            WHEN LOWER(Keywords) LIKE '%puerto rican%' THEN 'Puerto Rican'
+            WHEN LOWER(Keywords) LIKE '%russian%' THEN 'Russian'
+            WHEN LOWER(Keywords) LIKE '%scandinavian%' THEN 'Scandinavian'
+            WHEN LOWER(Keywords) LIKE '%scottish%' THEN 'Scottish'
+            WHEN LOWER(Keywords) LIKE '%somalian%' THEN 'Somalian'
+            WHEN LOWER(Keywords) LIKE '%south african%' THEN 'South African'
+            WHEN LOWER(Keywords) LIKE '%south american%' THEN 'South American'
+            WHEN LOWER(Keywords) LIKE '%southwest asia (middle east)%' THEN 'Southwest Asia (Middle East)'
+            WHEN LOWER(Keywords) LIKE '%southwestern u.s.%' THEN 'Southwestern U.S.'
+            WHEN LOWER(Keywords) LIKE '%spanish%' THEN 'Spanish'
+            WHEN LOWER(Keywords) LIKE '%sudanese%' THEN 'Sudanese'
+            WHEN LOWER(Keywords) LIKE '%swedish%' THEN 'Swedish'
+            WHEN LOWER(Keywords) LIKE '%swiss%' THEN 'Swiss'
+            WHEN LOWER(Keywords) LIKE '%szechuan%' THEN 'Szechuan'
+            WHEN LOWER(Keywords) LIKE '%tex mex%' THEN 'Tex Mex'
+            WHEN LOWER(Keywords) LIKE '%thai%' THEN 'Thai'
+            WHEN LOWER(Keywords) LIKE '%turkish%' THEN 'Turkish'
+            WHEN LOWER(Keywords) LIKE '%venezuelan%' THEN 'Venezuelan'
+            WHEN LOWER(Keywords) LIKE '%vietnamese%' THEN 'Vietnamese'
+            WHEN LOWER(Keywords) LIKE '%welsh%' THEN 'Welsh'
+            ELSE NULL
+        END,
+        'NAN'
+    ) AS Keywords
+FROM recipes_all;
+
+
+-- Select all from this table to see if it worked:
+SELECT * FROM country_keywords;
