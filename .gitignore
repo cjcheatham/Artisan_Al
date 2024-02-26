@@ -3,15 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Ignore recipes_cleaned.csv in data/clean directory
-data/clean/recipes_cleaned.csv
-
-# Ignore ingredients_cleaned.csv in data/clean directory
-data/clean/ingredients_cleaned.csv
-
-# Ignore json file for the webpage
-data/clean/cleanMLrecipes.json
-
 # C extensions
 *.so
 
