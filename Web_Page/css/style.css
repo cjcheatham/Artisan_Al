@@ -183,6 +183,7 @@ p {
   outline: none;
   box-shadow: none;
   border-color: #fb6e14;
+  color: black;
 }
 
 /*
@@ -492,7 +493,7 @@ p {
   }
 }
 #fh5co-sayings .flexslider .slides li blockquote p {
-  font-size: 35px;
+  font-size: 30px;
   line-height: 1.5;
 }
 @media screen and (max-width: 768px) {
@@ -1290,7 +1291,7 @@ p {
 }
 
 #fh5co-type {
-  padding: 7em 0;
+  padding: 1em 0;
   background-color: transparent;
   background-size: cover;
   background-attachment: fixed;

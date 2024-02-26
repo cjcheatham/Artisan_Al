@@ -18,70 +18,142 @@ function calculate() {
     const HealthKeyword = document.getElementById('diet').value;
     const CookTimeKeyword = document.getElementById('prep_time').value;
     const RegionKeyword = document.getElementById('cuisine').value;
+    const OccasionKeyword = document.getElementById('occasion').value;
 
     // Call calculateData with all three variables
-    calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword);
-    console.log(HealthKeyword, CookTimeKeyword, RegionKeyword)
+    calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword, OccasionKeyword);
+    console.log(HealthKeyword, CookTimeKeyword, RegionKeyword, OccasionKeyword)
 }
 
-function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword) {
+// Define getKeywordsArray function
+function getKeywordsArray(keywordsString) {
+    return keywordsString ? keywordsString.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+}
 
+function calculateData(HealthKeyword, CookTimeKeyword, RegionKeyword, OccasionKeyword) {
     let matchingRecords;
-    
+
     // Check for all possible combinations of missing keywords
-    if (!HealthKeyword && !CookTimeKeyword && !RegionKeyword) {
+    if (!HealthKeyword && !CookTimeKeyword && !RegionKeyword && !OccasionKeyword) {
         // If all keywords are missing, include all records
         matchingRecords = zipData;
+    } else if (!HealthKeyword && !CookTimeKeyword && !RegionKeyword) {
+        // If HealthKeyword, CookTimeKeyword, and RegionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            return keywordsArray.includes(OccasionKeyword);
+        });
+    } else if (!HealthKeyword && !CookTimeKeyword && !OccasionKeyword) {
+        // If HealthKeyword, CookTimeKeyword, and OccasionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            return keywordsArray.includes(RegionKeyword);
+        });
+    } else if (!HealthKeyword && !RegionKeyword && !OccasionKeyword) {
+        // If HealthKeyword, RegionKeyword, and OccasionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            return keywordsArray.includes(CookTimeKeyword);
+        });
+    } else if (!CookTimeKeyword && !RegionKeyword && !OccasionKeyword) {
+        // If CookTimeKeyword, RegionKeyword, and OccasionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            return keywordsArray.includes(HealthKeyword);
+        });
     } else if (!HealthKeyword && !CookTimeKeyword) {
         // If HealthKeyword and CookTimeKeyword are missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
-            return keywordsArray.includes(RegionKeyword);
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return regionMatch && occasionMatch;
         });
     } else if (!HealthKeyword && !RegionKeyword) {
         // If HealthKeyword and RegionKeyword are missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
-            return keywordsArray.includes(CookTimeKeyword);
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return cookTimeMatch && occasionMatch;
         });
-    } else if (!CookTimeKeyword && !RegionKeyword) {
-        // If CookTimeKeyword and RegionKeyword are missing
+    } else if (!HealthKeyword && !OccasionKeyword) {
+        // If HealthKeyword and OccasionKeyword are missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
-            return keywordsArray.includes(HealthKeyword);
-        });
-    } else if (!HealthKeyword) {
-        // If HealthKeyword is missing
-        matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const keywordsArray = getKeywordsArray(entry.Keywords);
             const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
             const regionMatch = keywordsArray.includes(RegionKeyword);
             return cookTimeMatch && regionMatch;
         });
-    } else if (!CookTimeKeyword) {
-        // If CookTimeKeyword is missing
+    } else if (!CookTimeKeyword && !RegionKeyword) {
+        // If CookTimeKeyword and RegionKeyword are missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return healthMatch && occasionMatch;
+        });
+    } else if (!CookTimeKeyword && !OccasionKeyword) {
+        // If CookTimeKeyword and OccasionKeyword are missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
             const healthMatch = keywordsArray.includes(HealthKeyword);
             const regionMatch = keywordsArray.includes(RegionKeyword);
             return healthMatch && regionMatch;
         });
-    } else if (!RegionKeyword) {
-        // If RegionKeyword is missing
+    } else if (!RegionKeyword && !OccasionKeyword) {
+        // If RegionKeyword and OccasionKeyword are missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const keywordsArray = getKeywordsArray(entry.Keywords);
             const healthMatch = keywordsArray.includes(HealthKeyword);
             const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
             return healthMatch && cookTimeMatch;
         });
-    } else {
-        // If all keywords are provided, filter based on all three keywords
+    } else if (!HealthKeyword) {
+        // If HealthKeyword is missing
         matchingRecords = zipData.filter(entry => {
-            const keywordsArray = entry.Keywords ? entry.Keywords.match(/"([^"]*)"/g).map(keyword => keyword.replace(/"/g, '')) : [];
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return cookTimeMatch && regionMatch && occasionMatch;
+        });
+    } else if (!CookTimeKeyword) {
+        // If CookTimeKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return healthMatch && regionMatch && occasionMatch;
+        });
+    } else if (!RegionKeyword) {
+        // If RegionKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return healthMatch && cookTimeMatch && occasionMatch;
+        });
+    } else if (!OccasionKeyword) {
+        // If OccasionKeyword is missing
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
             const healthMatch = keywordsArray.includes(HealthKeyword);
             const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
             const regionMatch = keywordsArray.includes(RegionKeyword);
             return healthMatch && cookTimeMatch && regionMatch;
+        });
+    } else {
+        // If all keywords are provided, filter based on all four keywords
+        matchingRecords = zipData.filter(entry => {
+            const keywordsArray = getKeywordsArray(entry.Keywords);
+            const healthMatch = keywordsArray.includes(HealthKeyword);
+            const cookTimeMatch = keywordsArray.includes(CookTimeKeyword);
+            const regionMatch = keywordsArray.includes(RegionKeyword);
+            const occasionMatch = keywordsArray.includes(OccasionKeyword);
+            return healthMatch && cookTimeMatch && regionMatch && occasionMatch;
         });
     }
 
@@ -163,9 +235,24 @@ function displayTop5Records(top5Records, HealthKeyword) {
 
             // Create spans for other record details
             const ratingSpan = $('<span>').text(`Rating: ${record.AggregatedRating}`);
-            const descriptionSpan = $('<span>').text(`Description: ${record.Description}`);
-            const instructionSpan = $('<span>').html(`Instructions: ${record.RecipeInstructions.replace(/(?:,)/g,'<br>')}`);
+            const descriptionSpan = $('<span>').html(`<strong>Description:</strong> ${record.Description}`);
             const urlSpan = $('<span>').html(`Food.com URL: <a href="${record.URL}" target="_blank">${record.URL}</a>`);
+            // Enclosed within double quotes and separated by commas
+            const instructionsList = record.RecipeInstructions.split('", "');
+
+            // Convert the list of instructions into an HTML string with line breaks
+            const formattedInstructions = instructionsList.map(instruction => {
+                // Remove leading and trailing double quotes
+
+                const cleanedInstruction = instruction.replace(/"/g, '').trim();
+                // Add '-' as bullet point
+                const bulletPointInstruction = `- ${cleanedInstruction}<br>`;
+                return bulletPointInstruction;
+            }).join('');
+
+            // Create a span element with the formatted instructions
+            const instructionSpan = $('<span>').html(`<strong>Instructions:</strong><br>${formattedInstructions}`);
+
 
             // Append ratingSpan and descriptionSpan to the li
             li.append(ratingSpan, $('<br>'), $('<br>'),descriptionSpan, $('<br>'), $('<br>'),instructionSpan, $('<br>'), $('<br>'),urlSpan, $('<br>'));
