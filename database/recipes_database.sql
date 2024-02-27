@@ -4,3 +4,4 @@ SELECT * FROM health_keywords;
 SELECT * FROM occasions_keywords;
 SELECT * FROM country_keywords;
 SELECT * FROM cook_time_keywords;
+SELECT * FROM recipes_health_keywords;
