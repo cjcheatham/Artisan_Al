@@ -22,7 +22,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     1. Collaborated with the team to understand the requirements and design goals of the project.
     2. Conducted data analysis and preprocessing tasks, including cleaning, transforming, and organizing recipe data for training the machine learning models.
     3. Explored and experimented with various machine learning algorithms, such as collaborative filtering, content-based filtering, and hybrid methods, to identify the most suitable approach for recipe recommendation.
-    4. Developed, trained, and evaluated machine learning models using libraries such as scikit-learn.
+    4. Developed, trained, and evaluated machine learning models using libraries with GridSearchCV with Rando, Forest Classfier mdthod.
     5. Implemented interactive features such as dropdown menus, form inputs, and dynamic content loading to enhance user experience.
     6. Ensured cross-browser compatibility and optimized website performance for fast loading times.
     7. Worked closely with back-end developers to integrate front-end components with server-side functionalities.
