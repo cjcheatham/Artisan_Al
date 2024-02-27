@@ -35,8 +35,6 @@
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css" />
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css" />
     <!-- Simple Line Icons -->
     <link rel="stylesheet" href="css/simple-line-icons.css" />
     <!-- Datetimepicker -->
@@ -134,38 +132,24 @@
                 <li>
                   <blockquote>
                     <p>
-                      &ldquo;Food is a reflection of culture,
-                      a celebration of life, and a testament to the memories
-                      we create with each bite.&rdquo;
+                      &ldquo;Our mission is  to create a transformative online platform,
+                      empowering users to prioritize their health through personalized 
+                      culinary experiences.&rdquo;
                     </p>
-                    <p class="quote-author">&mdash; Nathan Myhrvold</p>
                   </blockquote>
                 </li>
                 <li>
                   <blockquote>
                     <p>
-                      &ldquo;Food brings people together on many different levels. 
-                      It's nourishment of the soul and body; it's truly love.&rdquo;
+                      &ldquo;Join us in creating a future where good food and good health go hand in hand. With our vision - nutritious, flavorful recipes are just a click away, making wellness accessible to all.&rdquo;
                     </p>
-                    <p class="quote-author">&mdash; Giada De Laurentiis</p>
                   </blockquote>
                 </li>
                 <li>
                   <blockquote>
                     <p>
-                      &ldquo;Cooking is an art. It's an expression of creativity, a celebration of flavors, 
-                      and a gesture of love towards those we feed.&rdquo;
+                      &ldquo;Transforming the food landscape where every click on ArtisanAl brings you closer to a healthier, happier life.&rdquo;
                     </p>
-                    <p class="quote-author">&mdash; Julia Child</p>
-                  </blockquote>
-                </li>
-                <li>
-                  <blockquote>
-                    <p>
-                      &ldquo;In the kitchen, we transform humble ingredients into 
-                      culinary gold. With a dash of creativity, and a pinch of passion.&rdquo;
-                    </p>
-                    <p class="quote-author">&mdash; Josh Billings</p>
                   </blockquote>
                 </li>
               </ul>
@@ -197,6 +181,9 @@
                   <div class="form-group">
                     <label for="cuisine" style="margin-left: 65%;">Cuisine:</label>
                   </div>
+                  <div class="form-group">
+                    <label for="occasion" style="margin-left: 65%;">Occasion:</label>
+                  </div>
                 </div>
                 
                 <!-- Right Column for Dropdowns -->
@@ -210,6 +197,11 @@
                       <option value="Low Cholesterol">Low Cholesterol</option>
                       <option value="Low Carbs">Low Carbs</option>
                       <option value="Low Sodium">Low Sodium</option>
+                      <option value="Low Calorie">Low Calorie</option>
+                      <option value="Low Fat">Low Fat</option>
+                      <option value="High Fat">High Fat</option>
+                      <option value="Low Sugar">Low Sugar</option>
+                      <option value="High Fiber">High Fiber</option>
                       <option value="Vegan">Vegan</option>
                     </select>
                   </div>
@@ -225,31 +217,70 @@
                     </select>
                   </div>
                   
-                  <!-- Cuisine option Dropdown Selector -->
                   <div class="form-group">
                     <select id="cuisine" class="form-control" style="margin-left: 20%">
-                      <option value="">Everything</option>
-                      <option value="Asian">Asian</option>
-                      <option value="Chinese">Chinese</option>
-                      <option value="European">European</option>
-                      <option value="Filipino">Filipino</option>
-                      <option value="Indian">Indian</option>
-                      <option value="Japanese">Japanese</option>
-                      <option value="Korean">Korean</option>
-                      <option value="Mexican">Mexican</option>
-                      <option value="Spanish">Spanish</option>
-                      <option value="Thai">Thai</option>
-                      <option value="Vietnamese">Vietnamese</option>
-                      <option value="Others">Others</option>
+                        <!-- Default "Everything" option -->
+                        <option value="">Everything</option>
                     </select>
                   </div>
+            
+                  <script>
+                      // JavaScript function to generate HTML dropdown list options
+                      function generateDropdownOptions(options) {
+                          var dropdownOptions = '';
+                          options.forEach(function(option) {
+                              dropdownOptions += '<option value="' + option + '">' + option + '</option>';
+                          });
+                          return dropdownOptions;
+                      }
+              
+                      // List of cuisine options
+                      var country_region_keywords = ['Asian', 'Australian', 'Austrian', 'Belgian', 'Brazilian', 'Cajun', 'Cambodian', 'Canadian', 'Cantonese',
+                          'Caribbean', 'Chilean', 'Chinese', 'Colombian', 'Costa Rican', 'Creole', 'Cuban', 'Czech', 'Danish', 'Dutch',
+                          'Ecuadorean', 'Egyptian', 'Ethiopian', 'European', 'Filipino', 'Finnish', 'Georgian', 'German', 'Greek',
+                          'Guatemalan', 'Hawaiian', 'Honduran', 'Hunan', 'Hungarian', 'Icelandic', 'Indian', 'Indonesian', 'Iraqi',
+                          'Japanese', 'Korean', 'Lebanese', 'Malaysian', 'Mexican', 'Mongolian', 'Moroccan', 'Native American', 'Nepalese',
+                          'New Zealand', 'Nigerian', 'Norwegian', 'Pakistani', 'Palestinian', 'Pennsylvania Dutch', 'Peruvian', 'Polish',
+                          'Polynesian', 'Portuguese', 'Puerto Rican', 'Russian', 'Scandinavian', 'Scottish', 'Somalian', 'South African',
+                          'South American', 'Southwest Asia (middle East)', 'Southwestern U.S.', 'Spanish', 'Sudanese', 'Swedish', 'Swiss',
+                          'Szechuan', 'Tex Mex', 'Thai', 'Turkish', 'Venezuelan', 'Vietnamese', 'Welsh'];
+              
+                      // Call the function to generate options and append them to the dropdown
+                      document.getElementById('cuisine').innerHTML += generateDropdownOptions(country_region_keywords);
+                  </script>
+
+                  <div class="form-group">
+                    <select id="occasion" class="form-control" style="margin-left: 20%">
+                        <!-- Default "Everything" option -->
+                        <option value="">Everything</option>
+                    </select>
+                  </div>
+
+                  <script>
+                      // JavaScript function to generate HTML dropdown list options
+                      function generateDropdownOptions(options) {
+                          var dropdownOptions = '';
+                          options.forEach(function(option) {
+                              dropdownOptions += '<option value="' + option + '">' + option + '</option>';
+                          });
+                          return dropdownOptions;
+                      }
+
+                      // List of cuisine options
+                      var occasion_keywords = ['Birthday', 'Breakfast', 'Ramadan', 'Brunch', 'Camping', 
+                      'Chinese New Year', 'Christmas', 'For Large Groups', 'Halloween', 'Hanukkah', 
+                      'Household Cleaner', 'Labor Day', 'Memorial Day', 'Reynolds Wrap Contest', 'Spring', 
+                      "St. Patrick's Day", 'Summer', 'Thanksgiving', 'Weeknight', 'For Large Groups Holiday/Event', 
+                      'Halloween Cocktail', 'Served Hot New Years'];
+
+                      // Call the function to generate options and append them to the dropdown
+                      document.getElementById('occasion').innerHTML += generateDropdownOptions(occasion_keywords);
+                  </script>                             
                 </div>
               </div>
             </div>
             <!-- Button to Trigger Calculation -->
             <button onclick="triggerCalculateFunction()">Search</button>
-            <!-- Display Result -->
-            <!-- <div id="result"></div> -->
           </div>
         </div>        
       </div>
@@ -258,7 +289,7 @@
   <div class="container">
     <div class="row text-center fh5co-heading row-padded">
       <div class="col-md-8 col-md-offset-2">
-        <h2 class="heading to-animate">Our Recipes</h2>
+        <h2 class="heading to-animate">Recommend Recipes</h2>
       </div>
     </div>
     <div class="row to-animate">
@@ -279,38 +310,22 @@
     <div class="row">
       <div class="col-md-3 to-animate">
         <div class="fh5co-type">
-          <h3 class="with-icon icon-1">ML</h3>
-          <p>
-            Far far away, behind the word mountains, far from the
-            countries Vokalia and Consonantia, there live the blind texts.
-          </p>
+          <h3 class="with-icon icon-1"></h3>
         </div>
       </div>
       <div class="col-md-3 to-animate">
         <div class="fh5co-type">
-          <h3 class="with-icon icon-2">ML</h3>
-          <p>
-            Far far away, behind the word mountains, far from the
-            countries Vokalia and Consonantia, there live the blind texts.
-          </p>
+          <h3 class="with-icon icon-2"></h3>
         </div>
       </div>
       <div class="col-md-3 to-animate">
         <div class="fh5co-type">
-          <h3 class="with-icon icon-3">ML</h3>
-          <p>
-            Far far away, behind the word mountains, far from the
-            countries Vokalia and Consonantia, there live the blind texts.
-          </p>
+          <h3 class="with-icon icon-3"></h3>
         </div>
       </div>
       <div class="col-md-3 to-animate">
         <div class="fh5co-type">
-          <h3 class="with-icon icon-4">ML</h3>
-          <p>
-            Far far away, behind the word mountains, far from the
-            countries Vokalia and Consonantia, there live the blind texts.
-          </p>
+          <h3 class="with-icon icon-4"></h3>
         </div>
       </div>
     </div>
@@ -343,7 +358,7 @@
               <div class="col-md-6">
                 <p>Yee Wai Huang - Data Engineer<br><a href="mailto:sentvivi@gmail.com">sentvivi@gmail.com</a></p>
                 <p>Athanasios Chryssis - ML Engineer<br><a href="mailto:surfnterp@gmail.com">surfnterp@gmail.com</a></p>
-                <p>Jovane Cano<br><a href="jovanecano1995@gmail.com">jovanecano1995@gmail.com</a></p>
+                <p>Jovane Cano - Data Engineer<br><a href="jovanecano1995@gmail.com">jovanecano1995@gmail.com</a></p>
               </div>
               <!-- Right Column -->
               <div class="col-md-6">
