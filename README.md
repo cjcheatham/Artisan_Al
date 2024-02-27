@@ -44,14 +44,14 @@ To get started with our ArtisanAl Recipe Generator, simply
     3. Explored and experimented with various machine learning algorithms, such as collaborative filtering, content-based filtering, and hybrid methods, to identify the most suitable approach for recipe recommendation.
     4. Developed, trained, and evaluated machine learning models using libraries such as scikit-learn.
 
-### Cody Cheatham - Database Engineer
+### Cody Cheatham - Data Engineer
 - **Contribution:**
     1. Collaborated with the team to understand the project requirements and define the scope of the recommendation system.
     2. Designed and implemented the relational database schema for storing recipe data, considering factors such as data normalization, integrity constraints, and query performance.
     3. Implemented data cleaning and preprocessing pipelines to identify and handle missing values, outliers, and inconsistencies in the recipe dataset.
     4. Developed scripts and procedures to transform raw data into a structured format suitable for analysis and integration into the Recipe Generator platform.
 
-### Jovane Cano - Data Engineer
+### Jovane Cano - Database Engineer
 - **Contribution:**
     1. Collaborated with the team to clean and preprocess recipe data, ensuring its quality and consistency for use in the Recipe Generator.
     2. Developed Python scripts using Pandas to perform data cleaning, transformation, and normalization tasks, preparing the dataset for analysis and integration.
