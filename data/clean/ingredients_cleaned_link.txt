@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-Due to the size of the file please use the following link to download the cleaned data file:
-
-=======
-Due to the size of the file please use the following link to download the cleaned data file:
-
->>>>>>> ebacea857912aa53fbb9fcf531bafce231860cb4
-https://drive.google.com/file/d/1Wll0nhnUMr8Wy7E1T3Q1pJSn1mF7MxDK/view?usp=sharing
