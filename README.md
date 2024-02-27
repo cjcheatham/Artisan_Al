@@ -57,3 +57,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     1. Collaborated with the team to clean and preprocess recipe data, ensuring its quality and consistency for use in the Recipe Generator.
     2. Developed Python scripts using Pandas to perform data cleaning, transformation, and normalization tasks, preparing the dataset for analysis and integration.
     3. Created recipe generator scripts using Python to generate recipe suggestions based on user preferences, dietary restrictions, and other criteria
+ 
+## Resources Used / Acknowledgements
+We used public datasets for our projects. Below, you can find our sources: 
+- [Food.com - Recipes and Reviews] (https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews)https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviewsL)
