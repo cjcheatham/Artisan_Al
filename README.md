@@ -26,7 +26,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     4. Worked closely with back-end developers to integrate front-end components with server-side functionalities.
     5. Conducted usability tests and gathered feedback to iteratively improve the user interface and overall user experience.
 
-### Sophia
+### Theint Zin Tun
 - **Role:** Web Developer/Designer
 - **Contribution:**
     1. Collaborated with the team to understand the requirements and design goals of the project.
