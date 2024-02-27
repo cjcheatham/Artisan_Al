@@ -17,7 +17,7 @@ To get started with our ArtisanAl Recipe Generator, simply
 
 ## Meet the Team
 
-### Yee Wai Huang
+### Yee Wai Huang - Data Engineer 
 - **Role:** Web Developer/Designer
 - **Contribution:**
     1. Collaborated with the team to understand the requirements and design goals of the project.
@@ -27,7 +27,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     5. Conducted usability tests and gathered feedback to iteratively improve the user interface and overall user experience.
 
 ### Theint Zin Tun
-- **Role:** Web Developer/Designer
+- **Role:** Web Coordinator
 - **Contribution:**
     1. Collaborated with the team to understand the requirements and design goals of the project.
     2. Implemented interactive features such as dropdown menus, form inputs, and dynamic content loading to enhance user experience.
@@ -36,7 +36,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     5. Conducted usability tests and gathered feedback to iteratively improve the user interface and overall user experience.
 
 ### Athansiaos Chryssis
-- **Role:** ML Engineer
+- **Role:** Machine Learning Engineer
 - **Contribution:**
     1. Collaborated with the team to understand the project requirements and define the scope of the recommendation system.
     2. Conducted data analysis and preprocessing tasks, including cleaning, transforming, and organizing recipe data for training the machine learning models.
@@ -44,7 +44,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     4. Developed, trained, and evaluated machine learning models using libraries such as scikit-learn.
 
 ### Cody Cheatham
-- **Role:** Database Architect
+- **Role:** Database Engineer
 - **Contribution:**
     1. Collaborated with the team to understand the project requirements and define the scope of the recommendation system.
     2. Designed and implemented the relational database schema for storing recipe data, considering factors such as data normalization, integrity constraints, and query performance.
@@ -52,7 +52,7 @@ To get started with our ArtisanAl Recipe Generator, simply
     4. Developed scripts and procedures to transform raw data into a structured format suitable for analysis and integration into the Recipe Generator platform.
 
 ### Jovane Cano
-- **Role:** Python Developer
+- **Role:** Data Engineer
 - **Contribution:**
     1. Collaborated with the team to clean and preprocess recipe data, ensuring its quality and consistency for use in the Recipe Generator.
     2. Developed Python scripts using Pandas to perform data cleaning, transformation, and normalization tasks, preparing the dataset for analysis and integration.
