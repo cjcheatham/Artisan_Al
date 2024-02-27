@@ -60,4 +60,4 @@ To get started with our ArtisanAl Recipe Generator, simply
  
 ## Resources Used / Acknowledgements
 We used public datasets for our projects. Below, you can find our sources: 
-- [Food.com - Recipes and Reviews] (https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews)https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviewsL)
+- Food.com - Recipes and Reviews (https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews)https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviewsL)
