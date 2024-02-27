@@ -19,11 +19,21 @@ To get started with our ArtisanAl Recipe Generator, simply
 
 ### Yee Wai Huang
 - **Role:** [Web Developer/Designer]
-- **Contribution:** 
+- **Contribution:**
+    1. Collaborated with the team to understand the requirements and design goals of the project.
+    2. Implemented interactive features such as dropdown menus, form inputs, and dynamic content loading to enhance user experience.
+    3. Ensured cross-browser compatibility and optimized website performance for fast loading times.
+    4. Worked closely with back-end developers to integrate front-end components with server-side functionalities.
+    5. Conducted usability tests and gathered feedback to iteratively improve the user interface and overall user experience.
 
 ### Sophia
 - **Role:** [Web Developer/Designer]
 - **Contribution:**
+    1. Collaborated with the team to understand the requirements and design goals of the project.
+    2. Implemented interactive features such as dropdown menus, form inputs, and dynamic content loading to enhance user experience.
+    3. Ensured cross-browser compatibility and optimized website performance for fast loading times.
+    4. Worked closely with back-end developers to integrate front-end components with server-side functionalities.
+    5. Conducted usability tests and gathered feedback to iteratively improve the user interface and overall user experience.
 
 ### Athansiaos Chryssis
 - **Role:** [ML Engineer]
