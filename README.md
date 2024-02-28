@@ -11,7 +11,7 @@ Need help figuring out what to cook? Look no further,our recipe generator is a u
 
 ## Getting Started
 To get started with our ArtisanAl Recipe Generator, simply 
-  - follow our link: ArtisanAl Recipe Generator (NEED TO ADD CURRENT WEBPAGE URL)
+  - follow our link: ArtisanAl Recipe Generator [ArtisanAl](https://cjcheatham.github.io/Artisan_Al/)
   - Select an option from the various dropdowns
   - Take notes and get to cooking!
 
