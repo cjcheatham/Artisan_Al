@@ -1,4 +1,7 @@
-# Project_4
+# ArtisanAl - UCB Data Analytics Bootcamp Project 4
+
+## Introduction
+Need help figuring out what to cook? Look no further,our recipe generator is a user-friendly tool designed to make meal planning easy and enjoyable. Whether you're cooking for a special occasion, adhering to specific dietary restrictions, or simply short on time, our generator has you covered. With just a few clicks, you'll discover a variety of delicious recipes tailored to your preferences.
 
 ## Overview
 
